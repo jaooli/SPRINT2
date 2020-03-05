@@ -1,14 +1,14 @@
 RT 2
 
 router bgp 65000
-neighbor ? remote-as ?  
-network ? mask ?
-network 201.187
+neighbor 187.201.167.14 remote-as 65001 
+network 201.187.236.8 255.255.255.252
+network 187.201.167.12 255.255.255.252
 redistribute ospf 1 metric 1
 redistribute rip subnets
 
 interface g0/0
-ip address 201.187.236.20 255.255.255.252
+ip address 201.187.236.10 255.255.255.252
 no shudown
 description CONEXAO COM RT1
 exit
