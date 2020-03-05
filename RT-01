@@ -35,5 +35,6 @@ description VLAN 10
 exit
 interfaceg 0/2.100
 encapsulation dot1 100
-ip address
+ip address 10.128.18.241 255.255.255.240
 description VLAN DE GERENCIAMENTO
+exit
