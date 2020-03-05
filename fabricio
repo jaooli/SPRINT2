@@ -1,1 +1,34 @@
-
+configure terminal
+hostname RT1
+banner motd "senai"
+enable secret cisco
+service password-encryption
+ip domain-name grupoA.local
+crypto key generate rsa general-keys modulus 1024
+username cisco privilege 15 secret cisco
+line console 0
+login local
+exit
+ip ssh version 2
+line vty 0 15
+transport input ssh
+exec-timeout 5
+login local
+exit
+interface range gigabitethernet 0/0-1
+cdp enable
+exit
+interface gigabitethernet 0/1
+no shutdown
+description saida p/sw
+exit
+interface gigabitethernet 0/0
+ip address 201.187.236.9 255.255.255.252
+no shutdown
+description saida P/RT2
+exit
+router ospf 1
+passive-interface default 
+no passive-interface gigabitEthernet 0/0
+network 201.187.236.8 0.0.0.3 area 0
+do wr
