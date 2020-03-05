@@ -1,0 +1,19 @@
+RT 2
+
+router bgp 65000
+neighbor ? remote-as ?  
+network ? mask ?
+network 201.187
+redistribute ospf 1 metric 1
+redistribute rip subnets
+
+interface g0/0
+ip address 201.187.236.20 255.255.255.252
+no shudown
+description CONEXAO COM RT1
+exit
+interface g0/1
+ip address 187.201.167.13 255.255.255.252
+no shutdown
+description CONEXAO COM RT3
+exit
