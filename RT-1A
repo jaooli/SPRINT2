@@ -1,8 +1,7 @@
 enable
 configure terminal
 hostname RT1
-banner motd "
-                                                                                                            
+banner motd "                                                                                                            
    SSSSSSSSSSSSSSS EEEEEEEEEEEEEEEEEEEEEENNNNNNNN        NNNNNNNN               AAA               IIIIIIIIII
  SS:::::::::::::::SE::::::::::::::::::::EN:::::::N       N::::::N              A:::A              I::::::::I
 S:::::SSSSSS::::::SE::::::::::::::::::::EN::::::::N      N::::::N             A:::::A             I::::::::I
