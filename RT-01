@@ -33,7 +33,7 @@ encapsulation dot1q 10
 ip address 10.128.0.1 255.255.252.0
 description VLAN 10
 exit
-interfaceg 0/2.100
+interface 0/2.100
 encapsulation dot1 100
 ip address 10.128.18.241 255.255.255.240
 description VLAN DE GERENCIAMENTO
