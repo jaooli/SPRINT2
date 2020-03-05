@@ -1,3 +1,4 @@
+enable
 configure terminal
 hostname RT1
 banner motd "senai"
@@ -20,8 +21,9 @@ cdp enable
 exit
 interface gigabitethernet 0/1
 no shutdown
-description saida p/sw
+description saida p/sw1
 exit
+
 interface gigabitethernet 0/0
 ip address 201.187.236.9 255.255.255.252
 no shutdown
@@ -31,4 +33,11 @@ router ospf 1
 passive-interface default 
 no passive-interface gigabitEthernet 0/0
 network 201.187.236.8 0.0.0.3 area 0
+network 10.128.16.0 0.0.0.255 area 0
+network 10.128.14.0 0.0.0.255 area 0
+network 10.128.18.0 0.0.0.127 area 0
+network 10.128.18.128 0.0.0.63 area 0
+network 10.128.17.0 0.0.0.255 area 0
+network 10.128.0.0 0.0.3.255 area 0
+network 10.128.18.240 0.0.0.15 area 0
 do wr
