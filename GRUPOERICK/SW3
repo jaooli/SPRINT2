@@ -1,0 +1,97 @@
+enable
+configure terminal
+hostname SW3
+banner motd " 
+  _____ ______ _   _          _____ 
+ / ____|  ____| \ | |   /\   |_   _|
+| (___ | |__  |  \| |  /  \    | |  
+ \___ \|  __| | . ` | / /\ \   | |  
+ ____) | |____| |\  |/ ____ \ _| |_ 
+|_____/|______|_| \_/_/    \_\_____|
+"
+line consol 0
+login
+exit
+ip doamin-name rede.senai
+username cisco privilege 15 secret cisco 
+service password-encryption
+crypto key generate rsa general-keys modulus 1024
+line vty 0 15
+transport input ssh
+exec-timeout 5
+exit
+ip ssh version 2
+vlan 5
+name VLAN-5
+vlan 6
+name VLAN-6
+vlan 7
+name VLAN-7
+vlan 8
+name VLAN-8
+vlan 9
+name VLAN-9
+vlan 10
+name VLAN-10
+vlan 11
+name VLAN-11
+vlan 12
+name VLAN-12
+vlan 13
+name VLAN-13
+vlan 14
+name VLAN-14
+vlan 15
+name VLAN-15
+vlan 16
+name VLAN-16
+vlan 99
+name vlan-99
+vlan 100
+name VLAN-Equipamentos
+exit
+cdp run
+spanning-tree mode rapid-pvst
+interface g0/2
+switchport mode trunk
+switchport trunk native vlan 900
+switchport trunk allowed vlan 6,7,8,9,10,11,12,13,14,15,16,900
+switchport port-security
+switchport port-security maximum 1
+switchport port-security violation restrict
+switchport port-security mac-address stick
+no spanning-tree portfast bpdu-guard disable
+int range f0/1 - f0/12
+switchport mode access
+switchport access vlan 99
+switchport port-security
+switchport port-security maximum 1
+switchport port-security violation restrict
+switchport port-security mac-address stick
+no cdp enable
+shutdown
+int range f0/13 - f0/16
+switchport mode trunk
+switchport trunk vlan native 900
+switchport trunk allowed vlan 6,7,8,9,10,11,12,13,14,15,16,900
+channel-group 1 mode desirable
+switchport port-security
+switchport port-security maximum 1
+switchport port-security violation restrict
+switchport port-security mac-address stick
+no spanning-tree portfast disable
+int range f0/17 - f0/24
+switchport mode access
+switchport access vlan 99
+switchport port-security
+switchport port-security maximum 1
+switchport port-security violation restrict
+switchport port-security mac-address stick
+no cdp enable
+shutdown
+int vlan 100
+ip address 10.28.18.245 255.255.255.240
+no shutdown
+exit
+ip default-gateway 10.128.18.242
+do wr
