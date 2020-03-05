@@ -1,4 +1,22 @@
 RT 2
+enable
+configure terminal
+hostname RT2
+banner motd "senai"
+enable secret cisco
+service password-encryption
+ip domain-name grupoA.local
+crypto key generate rsa general-keys modulus 1024
+username cisco privilege 15 secret cisco
+line console 0
+login local
+exit
+ip ssh version 2
+line vty 0 15
+transport input ssh
+exec-timeout 5
+login local
+exit
 
 router bgp 65000
 neighbor 187.201.167.14 remote-as 65001 
