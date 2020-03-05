@@ -1,0 +1,39 @@
+RT 1 VLANS 
+
+interface g0/2
+no shutdown
+exit
+interface g0/2.5
+encapsulation dot1q 5
+ip address 10.128.16.1 255.255.255.0
+description VLAN 5
+exit
+interface g0/2.6
+encapsulation dot1q 6
+ip address 10.128.14.1 255.255.255.0
+description VLAN 6
+exit
+interface g0/2.7
+encapsulation dot1q 7
+ip address 10.128.18.1 255.255.255.0
+description VLAN 7
+exit
+interface g0/2.8
+encapsulation dot1q 8
+ip address 10.128.18.129 255.255.255.192
+description VLAN 8
+exit
+interface g0/2.9
+encapsulation dot1q 9
+ip address 10.128.17.1 255.255.255.0
+description VLAN 9
+exit
+interface g0/2.10
+encapsulation dot1q 10
+ip address 10.128.0.1 255.255.252.0
+description VLAN 10
+exit
+interfaceg 0/2.100
+encapsulation dot1 100
+ip address
+description VLAN DE GERENCIAMENTO
